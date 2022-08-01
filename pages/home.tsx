@@ -4,11 +4,10 @@ import Head from 'next/head'
 import { HeaderLink } from '../Components/Home'
 import { LinkIconBox } from '../Components/Home'
 import {  HomeButtonData } from '../utils/HomeButtonData.js'
-import { ReactNode } from 'react'
 const home = () => {
     /* Jsx Variabkes */
-    const intentButtonMap: ReactNode[] = HomeButtonData.map((item: string,index: number)=>(
-        <LinkIconBox text={item}/>
+    const intentButtonMap: JSX.Element[] = HomeButtonData.map((item: string, index: number)=>(
+        <LinkIconBox text={item} key={index} />
     ) )  
     /* --- JSX ---*/
   return (
@@ -19,7 +18,7 @@ const home = () => {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <header className= 'flex justify-around items-center py-4'>
-            <div className='relative w-10 h-10'>
+            <div className='relative w-20 h-20 cursor-pointer'>
             <Image src="https://rb.gy/vtbzlp" layout="fill" objectFit="contain" />
             </div>
             <div className="flex items-center sm:divide-x divide-gray-300 ">
