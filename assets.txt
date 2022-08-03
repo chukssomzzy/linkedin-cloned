@@ -1,4 +1,6 @@
 Home Routes
+ <Image src="https://rb.gy/dpmd9s" width={55} height={55} />
 
- Index Route 
+ Index Route   
+        emoji 
 

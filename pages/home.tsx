@@ -4,12 +4,37 @@ import Head from 'next/head'
 import { HeaderLink } from '../Components/Home'
 import { LinkIconBox } from '../Components/Home'
 import {  HomeButtonData } from '../utils/HomeButtonData.js'
-const home = () => {
+import { ClientSafeProvider, getProviders, LiteralUnion, signIn } from 'next-auth/react'
+import { BuiltInProviderType } from 'next-auth/providers'
+import { NextPage } from 'next'
+
+
+
+type Iprops = {
+    providers: Promise<Record<LiteralUnion<BuiltInProviderType,string>, ClientSafeProvider> | null>
+}
+const home: NextPage<Iprops> = ({providers}) => {
     /* Jsx Variabkes */
     const intentButtonMap: JSX.Element[] = HomeButtonData.map((item: string, index: number)=>(
         <LinkIconBox text={item} key={index} />
     ) )  
+     
+    const signInProviders: JSX.Element[] = Object.values(providers)
+    .map((provider)=>(
+        <div key={provider.name}>
+               <div className="pl-4">
+ <button 
+                   type="button" 
+                   className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1.5 transition-all hover:border-2"
+                   onClick={()=> signIn(provider.id,{ callBackUrl: '/'})}
+ >
+                   Sign In
+ </button>
+        </div>
+        </div>
+    ))
     /* --- JSX ---*/
+
   return (
     <div className='space-y-10 relative'>
         <Head>
@@ -28,9 +53,9 @@ const home = () => {
                     <HeaderLink Icon={ OndemandVideoSharp } text='Learning'/>
                     <HeaderLink Icon={ BusinessCenterOutlined } text='Jobs'/>
                 </div>
-               <div className="pl-4">
- <button type="button" className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1.5 transition-all hover:border-2">Sign In</button>
-            </div>          
+                {
+                signInProviders[0]    
+                }          
             </div>
         </header>                                             
         <main className="flex flex-col xl:flex-row items-center m-w-screen-lg mx-auto">
@@ -50,4 +75,14 @@ const home = () => {
   )
 }
 
-export default home                                    
+export default home  
+
+export const getServerSideProps = async ()=>{
+    const providers = await getProviders()
+
+    return {
+        props: {
+            providers
+        }
+    }
+}
