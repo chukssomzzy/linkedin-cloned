@@ -25,7 +25,7 @@ const Header = ({}: Props) => {
     }, [])
 
   return (
-      <header classNam='sticky top-0 z-40 bg-white dark:bg-[#1d2226] flex items-center justify-around py-1.5 px-3 focus-within:shadow-lg'>
+      <header className='sticky top-0 z-40 bg-white dark:bg-[#1d2226] flex items-center justify-around py-1.5 px-3 focus-within:shadow-lg'>
         {/* left section */}
         <div className="flex item-center space-x-2 w-full max-w-xs">
             { mounted && (
@@ -53,18 +53,15 @@ const Header = ({}: Props) => {
             {/*  toggle functionality with framer very cool shit */}
             {
                 mounted && (
-                    <div onClick={()=>setTheme(prevTheme=> prevTheme === 'dark' ? 'light' : 'dark')} className= {`bg-gray-600 flex items-center px-0.5 rounded-full h-6 w-12 cursor-pointer flex-shrink-0 relative ${resolvedTheme === 'dark' ? 'justify-end': 'justify-start'}`}>
+                    <div onClick={()=>setTheme( resolvedTheme === 'dark' ? 'light' : 'dark')} className= {`bg-gray-600 flex items-center px-0.5 rounded-full h-6 w-12 cursor-pointer flex-shrink-0 relative ${resolvedTheme === 'dark' ? 'justify-end': 'justify-start'}`}>
                     <span className="absolute left-0"> 
                      🌜
                     </span>
                 {/* framer component */}
                 <motion.div className='w-5 h-5 bg-white shadow-lg rounded-full z-40' 
                     layout
-                animate={{ 
-
-                    }}
                     transition={{
-                        type='spring',
+                        type: 'spring',
                         stiffness: 700,
                         damping: 30
                     }}
