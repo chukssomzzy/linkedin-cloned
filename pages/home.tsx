@@ -6,13 +6,14 @@ import { LinkIconBox } from '../Components/Home'
 import {  HomeButtonData } from '../utils/HomeButtonData.js'
 import { ClientSafeProvider, getProviders, LiteralUnion, signIn } from 'next-auth/react'
 import { BuiltInProviderType } from 'next-auth/providers'
-import { NextPage } from 'next'
+import { GetServerSidePropsContext, NextPage } from 'next'
 
 
 
 type Iprops = {
     providers: Promise<Record<LiteralUnion<BuiltInProviderType,string>, ClientSafeProvider> | null>
 }
+
 const home: NextPage<Iprops> = ({providers}) => {
     /* Jsx Variabkes */
     const intentButtonMap: JSX.Element[] = HomeButtonData.map((item: string, index: number)=>(
@@ -77,11 +78,8 @@ const home: NextPage<Iprops> = ({providers}) => {
 
 export default home  
 
-export const getServerSideProps = async ()=>{
-    console.log("getserversideprops called")
-
+export const getServerSideProps = async (context: GetServerSidePropsContext)=>{
     const providers = await getProviders()
-   console.log(providers,'providers')
     return {
         props: {
             providers
