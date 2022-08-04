@@ -20,6 +20,9 @@ const Header = ({}: Props) => {
     /* JSX */
     const [mounted, setMounted] = useState(false)
     const {setTheme, resolvedTheme, theme} = useTheme()
+    console.log(theme)
+
+
     useEffect(() => {
         setMounted(true)
     }, [])
@@ -27,16 +30,16 @@ const Header = ({}: Props) => {
   return (
       <header className='sticky top-0 z-40 bg-white dark:bg-[#1d2226] flex items-center justify-around py-1.5 px-3 focus-within:shadow-lg'>
         {/* left section */}
-        <div className="flex item-center space-x-2 w-full max-w-xs">
+        <div className="flex item-center space-x-2 w-full max-w-xs cursor-pointer">
             { mounted && (
                 resolvedTheme === 'dark' ? (
             <Image src="https://rb.gy/bizvqj" width={45} height={45} />
                 )  : (
-            <Image src="https://rb.gy/bpmd9s" width={55} height={55} />
+            <Image src="https://rb.gy/druvu3" width={55} height={55} />
                 )
             )
             }
-            <div className="flex space-x-1 items-center dark:md:bg-gray-700 py-2.5 px-4 rounded w-4 "> 
+            <div className="flex space-x-1 items-center dark:md:bg-gray-700 py-2.5 px-4 rounded w-full "> 
             <SearchRoundedIcon />
                 <input type="text" placeholder='search' className='hidden md:inline-flex bg-transparent text-sm focus:outline-none placeholder-black/70 dark:placeholder-white/75 flex-grow' />
             </div>

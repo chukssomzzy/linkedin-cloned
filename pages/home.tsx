@@ -78,8 +78,10 @@ const home: NextPage<Iprops> = ({providers}) => {
 export default home  
 
 export const getServerSideProps = async ()=>{
-    const providers = await getProviders()
+    console.log("getserversideprops called")
 
+    const providers = await getProviders()
+   console.log(providers,'providers')
     return {
         props: {
             providers

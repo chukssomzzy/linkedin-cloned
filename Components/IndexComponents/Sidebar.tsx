@@ -1,20 +1,20 @@
 import React from 'react'
-import { Avartar } from '@mui/material'
-import BookmarkOutlineIcon from '@mui/icons-material/BookmarkOutline'
-type Props = {}
+import { Avatar } from '@mui/material'
+import { AddRounded, BookmarkOutlined } from '@mui/icons-material'
+import Image from 'next/image'
     
-const Sidebar = (props: Props) => {
+const Sidebar = () => {
 
   return (
     <div className='space-y-2 min-w-max max-w-lg'>
         {/* Top */}
         <div className='bg-white dark:bg-[#1d2226] rounded-lg overflow-hidden relative flex flex-col items-center text-center border border-gray-300 dark:border-none'>
             <div className="relative w-full h-14 ">
-                <Image src="https://rb.gy/126zak" layout="fill" priority/>
+                <Image src="https://rb.gy/i26zak" layout="fill" priority/>
             </div>
-            <Avartar 
+            <Avatar 
               //  onClick={ signOut }
-              // src= {session?.user?.image}
+               src= 'https://rb.gy/n9fzh1'
                 className='!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer'
             />
             <div className='mt-5 py-4 space-y-0.5 '>
@@ -42,7 +42,7 @@ const Sidebar = (props: Props) => {
                     </h4>
                 </div>
                 <div className="sidebarButton flex items-center space-x-1.5">
-                    <BookmarkOutlineIcon className='!ml-1'/>
+                    <BookmarkOutlined className='!ml-1'/>
                     <h4 className="dark:text-white font-medium">My Items</h4>
                 </div>
             </div>
@@ -52,7 +52,7 @@ const Sidebar = (props: Props) => {
             <p className='sidebarLink'>Groups</p>  
             <div className="flex items-center justify-between">
                 <p className="sidebarLink">Events</p>
-                <AddRoundedIcon className="!h-5"></AddRoundedIcon>
+                <AddRounded className="!h-5"/>
             </div>
             <p className="SidebarLink">followed HashTags</p>
             <div className='SidebarLink text-center'>
