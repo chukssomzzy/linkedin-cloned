@@ -3,10 +3,10 @@ import Image from 'next/image'
 import Head from 'next/head'
 import { HeaderLink } from '../Components/Home'
 import { LinkIconBox } from '../Components/Home'
-import {  HomeButtonData } from '../utils/HomeButtonData.js'
+import {  HomeButtonData } from '../utils'
 import { ClientSafeProvider, getProviders, LiteralUnion, signIn } from 'next-auth/react'
 import { BuiltInProviderType } from 'next-auth/providers'
-import { GetServerSidePropsContext, NextPage } from 'next'
+import { GetServerSidePropsContext,NextPage } from 'next'
 
 
 
