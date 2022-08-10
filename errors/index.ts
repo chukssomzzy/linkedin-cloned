@@ -1,2 +1,6 @@
 export { default as errorHandler } from './errorHandler'
 export { default as customError } from './customError'
+ export { default as BadRequest } from './badRequest' 
+ export { default as  InvalidMethod } from './invalidMethod' 
+ export { default as NotFound } from './notFound' 
+ export { default as UnAuthenticated } from './unAuthenticated' 

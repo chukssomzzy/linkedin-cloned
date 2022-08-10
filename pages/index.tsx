@@ -1,14 +1,22 @@
 import { GetServerSidePropsContext,NextPage } from 'next'
 import Head from 'next/head'
-import { Feeds, Header,Modal,Sidebar } from '../Components/IndexComponents'
+import { Feeds, Header,Modal,Sidebar, Widget } from '../Components/IndexComponents'
 import { getSession, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { AnimatePresence } from 'framer-motion'
 import { useRecoilState } from 'recoil'
 import { modalState, modalTypeState } from '../atoms/modalAtom'
+import { getPosts } from '../api/posts'
+import { ArticleType, PostType } from '../types'
+import { getNews } from '../api/News'
+
+  type Props ={
+      posts: PostType[],
+      articles: ArticleType[]
+  }
 
 
-const Home: NextPage = () => {
+  const Home: NextPage<Props> = ({posts, articles}) => {
     /* --- Hooks ---- */ 
     const router = useRouter()
     const { status} = useSession({
@@ -34,11 +42,11 @@ const Home: NextPage = () => {
             <div className="flex flex-col md:flex-row gap-5">
                 {/* sidebar*/}
                   <Sidebar />
-                  <Feeds />
+                  <Feeds posts={posts} />
                 {/*Feeds*/}
             </div>
             {/* Widget*/}
-
+                <Widget articles={articles}/>
             <AnimatePresence>
                 { modalOpen && (
                         <Modal handleClose={()=> setModalOpen(false)} type={modalType}/>
@@ -60,10 +68,17 @@ export const getServerSideProps = async (context:GetServerSidePropsContext )=>{
             destination:'/home',
         }
     }
+    /* fetching all post from server */
+    const posts = await getPosts()
+
+    /* Google News Api */
+    const news = await getNews()
 
     return {
         props: {
-            session
+            session,
+            posts,
+            articles: news.articles
         }
     }
 }
