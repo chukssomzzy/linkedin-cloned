@@ -25,9 +25,10 @@
         "**/*.ts",
         "**/*.tsx",
         "pages/api/auth/[...nextauth].js",
-        "pages/_app.jsx"
-, "lib/mongodb.js"    ],
+        "lib/mongodb.js"
+    ],
     "exclude": [
-        "node_modules","utils/ConnectMongo.ts"
+        "node_modules",
+        "utils/ConnectMongo.ts"
     ]
 }

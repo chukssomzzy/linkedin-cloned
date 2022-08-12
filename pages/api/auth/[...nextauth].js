@@ -3,7 +3,7 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import clientPromise from '../../../lib/mongodb'
 
-export const authOptions = {
+export default NextAuth({
  
   providers: [
     GoogleProvider({
@@ -22,8 +22,8 @@ export const authOptions = {
     // Set to true to use encryption (default: false)
     maxAge: 60 * 60 * 24 * 30,
     secret: process.env.NEXTAUTH_SECRET,
-     async encode() {},
-     async decode() {},
+    // async encode() {},
+     //async decode() {},
   },
   pages: {
      signIn: '/home',  // Displays signin buttons
@@ -37,7 +37,5 @@ export const authOptions = {
    
   // Enable debug messages in the console if you are having problems
   debug: false,
-}
-
- export default NextAuth(authOptions)
+})
  
