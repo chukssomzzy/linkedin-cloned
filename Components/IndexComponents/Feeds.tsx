@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Input, Post } from '.'
-import { getPosts } from '../../api/posts'
+import { getPosts } from '../../apis/posts'
 import { handlePostState, useSSRPostsState } from '../../atoms/postsAtom'
 import { useRecoilState } from 'recoil'
 import { PostType } from '../../types'

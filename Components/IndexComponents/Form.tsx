@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { postPost } from '../../api/posts'
+import { postPost } from '../../apis/posts'
 import { useSession } from 'next-auth/react' 
 import { useRecoilState } from 'recoil'
 import { modalState } from '../../atoms/modalAtom'

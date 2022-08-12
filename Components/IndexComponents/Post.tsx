@@ -16,7 +16,7 @@ import { handlePostState, getPostState } from '../../atoms/postsAtom'
 import { useSession } from 'next-auth/react'
 import TimeAgo from 'timeago-react'
 import { trunc } from '../../utils'
-import { deletePost } from '../../api/posts'
+import { deletePost } from '../../apis/posts'
 
 type Props = {
     post: PostType,

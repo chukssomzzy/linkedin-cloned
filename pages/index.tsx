@@ -6,9 +6,9 @@ import { useRouter } from 'next/router'
 import { AnimatePresence } from 'framer-motion'
 import { useRecoilState } from 'recoil'
 import { modalState, modalTypeState } from '../atoms/modalAtom'
-import { getPosts } from '../api/posts'
+import { getPosts } from '../apis/posts'
 import { ArticleType, PostType } from '../types'
-import { getNews } from '../api/News'
+import { getNews } from '../apis/News'
 
   type Props ={
       posts: PostType[],
