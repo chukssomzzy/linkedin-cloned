@@ -18,7 +18,8 @@ const Feed = ({ posts }: Props) => {
     useEffect(() => {
         const fetchPosts = async () => {
             const posts = await getPosts()
-            setRealTimePost(posts)
+            console.log(posts)
+            setRealTimePost(posts.posts)
             setHandlePost(false)
           //  setUseSSRPosts(false)
         }
@@ -29,13 +30,14 @@ const Feed = ({ posts }: Props) => {
     /* --- functions --- */
 
     /* ---- Function Jsx --- */
-    const postList =  realTimePost.map(post=>(
+    console.log(realTimePost)
+    const postList =  realTimePost?.map(post=>(
         <Post post={post} key={post._id}/>
     ))
 
      /* --- Jsx -- */
   return (
-        <div className='space-y-6 pb-24 max-w-lg'>
+        <div className='max-w-lg pb-24 space-y-6'>
             <Input />
             {/* Posts */}
             {/* Hybrid Comptnents here */}

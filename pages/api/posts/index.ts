@@ -4,16 +4,15 @@ import { errorHandler, InvalidMethod } from '../../../errors'
 import dbConnect from '../../../lib/dbConnect'
 import { Post } from '../../../model'
 import StatusCodes from 'http-status-codes'
-import { getToken } from 'next-auth/jwt'
 import checkForJWT from '../../../lib/Authorized'
 
 const handler = errorHandler(async (req, res)=> {
-      await checkForJWT(req)
+     // await checkForJWT(req)
       const { method, body } = req;  
       await dbConnect() 
      switch(method){
          case 'GET':{
-           const posts = await Post.find({}).sort('createdAt')
+           const posts = await Post.find({}).sort('-createdAt')
              return res.status(StatusCodes.OK).json({success: true, posts: posts})
          }
          case 'POST': {

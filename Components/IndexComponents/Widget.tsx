@@ -14,11 +14,14 @@ const Widget = ({articles}: Props) => {
     const articleNum = 5
     /* --- Jsx Map --- */
     const articleMapJsx = articles.slice(0, articleNum).map((article)=>(
-        <div key={`${article.url}`} className='flex space-x-2 items-center cursor-pointer hover:bg-black/10 dark:hover:bg-black/20 px-10 py-4'>
+        <div key={`${article.url}`} className='flex items-center px-10 py-4 space-x-2 cursor-pointer hover:bg-black/10 dark:hover:bg-black/20'>
                 <FiberManualRecordRounded className='!h-2 !w-2'/>
             <div>
-                <h5 className="max-w-xs font-medium text-sm truncate pr-10">
-                    {article.title}
+                <h5 className="max-w-xs pr-10 text-sm font-medium truncate">
+                    <a href={article?.url} target='_blank' referrerPolicy='no-referrer'>
+                        {article.title}
+                    </a>
+                    
                 </h5>
                 <TimeAgo 
                     datetime = {`${article.publishedAt}`}
@@ -30,12 +33,12 @@ const Widget = ({articles}: Props) => {
     /* --- JSX ---- */
     
   return (
-      <div className='hidden xl:inline space-y-2'>
+      <div className='hidden space-y-2 xl:inline'>
           {/* News */}
-          <div className="bg-white dark:bg-[#1d2226].py-2.5 rounded-lg space-y-2 w-11/12 overflow-hidden border border-gray-300 dark:border-none">
+          <div className="bg-white dark:bg-[#1d2226] py-2.5 rounded-lg space-y-2 w-11/12 overflow-hidden border border-gray-300 dark:border-none">
               <div className='flex items-center justify-between font-bold py-2.5'>
             <h4>LINKEDIN News</h4>
-              <InfoRounded className='h-5 w-5'/>                                                              </div>
+              <InfoRounded className='w-5 h-5'/>                                                              </div>
           </div>
            <div className='space-y-2'>
                {

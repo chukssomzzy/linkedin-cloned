@@ -38,8 +38,8 @@ import { getNews } from '../api/News'
             <link rel="icon" href="/favicon.ico" />
         </Head>
           <Header />   
-        <main className="flex justify-center gap-x-5 px-4 sm:px-12">
-            <div className="flex flex-col md:flex-row gap-5">
+        <main className="flex justify-center px-4 gap-x-5 sm:px-12">
+            <div className="flex flex-col gap-5 md:flex-row">
                 {/* sidebar*/}
                   <Sidebar />
                   <Feeds posts={posts} />
@@ -77,7 +77,7 @@ export const getServerSideProps = async (context:GetServerSidePropsContext )=>{
     return {
         props: {
             session,
-            posts,
+            posts: posts.posts,
             articles: news.articles
         }
     }

@@ -20,7 +20,6 @@ const Header = ({ }: Props) => {
     /* JSX */
     const [mounted, setMounted] = useState(false)
     const { setTheme, resolvedTheme, theme } = useTheme()
-    console.log(theme)
 
 
     useEffect(() => {

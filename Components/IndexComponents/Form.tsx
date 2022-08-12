@@ -17,7 +17,7 @@ const Form = (props: Props) => {
 
     /*  --- variablea --- */ 
     const minTextLength = 10
-    const canSave= Boolean(textAreaValue?.trim()?.length >= minTextLength || imageUrlValue?.trim())
+    const canSave= Boolean(textAreaValue?.trim())
     /* --- functions ---- */ 
     const uploadPost = async (e: React.MouseEvent<HTMLButtonElement>)=> {
        try {
@@ -41,7 +41,7 @@ const Form = (props: Props) => {
     }
 
   return (
-      <form onSubmit={(e)=> e.preventDefault()} className='flex flex-col relative text-black/75 dark:text-white/75'>
+      <form onSubmit={(e)=> e.preventDefault()} className='relative flex flex-col text-black/75 dark:text-white/75'>
           <textarea 
           id="postForm"
           name="postForm" 
@@ -53,16 +53,16 @@ const Form = (props: Props) => {
           <input 
               type="text" 
           placeholder='Add a image url (Optional)' 
-          className='bg-transparent focus:outline-none truncate max-w-xs md:max-w-sm dark:placeholder-white/75'
+          className='max-w-xs truncate bg-transparent focus:outline-none md:max-w-sm dark:placeholder-white/75'
           value={imageUrlValue}
-          onChange={() => setImageUrlValue}
+          onChange={(e) => setImageUrlValue(e.target.value)}
           />
         <button 
-            className="absolute bottom-0 right-0 font-md bg-blue-400 hover:bg-blue-500 disabled:text-black-40 disabled:bg-white-75 disabled:cursor-not-allowed text-white rounded-full px-3.5 py-1"
+            className="absolute bottom-0 right-0 font-md bg-blue-400 hover:bg-blue-500 disabled:text-black-40 disabled:bg-white/75 disabled:cursor-not-allowed text-white rounded-full px-3.5 py-1"
           disabled={!canSave}
             type="submit"
             onClick={uploadPost}
-        ></button>
+        >Post</button>
       </form>
   )
 }

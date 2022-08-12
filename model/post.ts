@@ -9,7 +9,7 @@ import { Schema, model, models } from 'mongoose'
    imageUrl:{
         type: String, 
         lowerCase: true,
-        maxlength: [100, 'your url string cannot be more than 100 character']
+        maxlength: [1000, 'your url string cannot be more than 1000 character']
    }, 
    postedBy:{
     userName: {
@@ -35,6 +35,5 @@ import { Schema, model, models } from 'mongoose'
     }
  }, { timestamps: true}) 
 
-   console.log(models)
 
  export default models.Post || model('Post', PostSchema)

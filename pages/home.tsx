@@ -37,18 +37,18 @@ const home: NextPage<Iprops> = ({providers}) => {
     /* --- JSX ---*/
 
   return (
-    <div className='space-y-10 relative'>
+    <div className='relative space-y-10 xl:ml-20'>
         <Head>
            <title>LinkedIn Login</title>
             <meta name="description" content="LinkedIn login page" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
-        <header className= 'flex justify-around items-center py-4'>
-            <div className='relative w-20 h-20 cursor-pointer'>
+        <header className= 'flex items-center justify-around py-4 xl:justify-between xl:mr-20'>
+            <div className='relative w-40 h-20 cursor-pointer'>
             <Image src="https://rb.gy/vtbzlp" layout="fill" objectFit="contain" />
             </div>
-            <div className="flex items-center sm:divide-x divide-gray-300 ">
-                <div className="hidden sm:flex space-x-8 pr-4">
+            <div className="flex items-center divide-gray-300 sm:divide-x ">
+                <div className="hidden pr-4 space-x-8 sm:flex">
                     <HeaderLink Icon={ ExploreOutlined } text="Discover"/>
                     <HeaderLink Icon={ GroupsOutlined } text='People' />
                     <HeaderLink Icon={ OndemandVideoSharp } text='Learning'/>
@@ -59,7 +59,7 @@ const home: NextPage<Iprops> = ({providers}) => {
                 }          
             </div>
         </header>                                             
-        <main className="flex flex-col xl:flex-row items-center m-w-screen-lg mx-auto">
+        <main className="flex flex-col items-center mx-auto xl:flex-row m-w-screen-lg">
             <div className="space-y-6 xl:space-10">
                 <h1 className="text-3xl md:text-5xl text-amber-800/80 max-w-xl !leading-snug pl-4 xl:p-0">Welcome to your professional community</h1>
                 <div className="space-y-4">

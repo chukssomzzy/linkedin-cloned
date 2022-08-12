@@ -39,7 +39,6 @@ const Post = ({ post, modalPost, }: Props) => {
     
     const onDeletePost = async ()=>{
         const resp = await deletePost(post?._id)
-        console.log(resp)
         setModalOpen(false)
         setHandlePost(true)
     }
@@ -49,7 +48,7 @@ const Post = ({ post, modalPost, }: Props) => {
         <div className={`bg-white dark:bg-[#1d2226] ${modalPost ? 'rounded-r-lg' : 'rounded-lg'} space-y-2 py-2.5 border-gray-300 dark:border-none`}>
             <div className="flex items-center px-2.5 cursor-pointer">
                 <Avatar src={post.postedBy.userImageUrl} className='!h-10 !w-10 cursor-pointer' />
-                <div className="mr-auto ml-2 leading-none">
+                <div className="ml-2 mr-auto leading-none">
                     <h6 className="font-medium hover:text-blue-500 hover:underline">{post?.postedBy.userName}</h6>
                     <p className="text-sm dark:text-white/75 opacity-80">{post.postedBy.userEmail}</p>                {/* Time Ago stamps */}
                       <TimeAgo 
@@ -119,9 +118,9 @@ const Post = ({ post, modalPost, }: Props) => {
                     )
                 }
                 {
-                   (session?.user?.email === 'post.postedBy.userEmail' )   ? (
+                   (session?.user?.email === post.postedBy.userEmail )   ? (
                        <button 
-                           className='postButton focus:text-red-400'
+                           className='postButton hover:text-red-400'
                            onClick= {onDeletePost}
                        >
                                <DeleteRounded />

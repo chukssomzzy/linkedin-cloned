@@ -5,7 +5,7 @@ import StatusCodes from 'http-status-codes'
  import checkForJWT from '../../../lib/Authorized'
 
 const handler = errorHandler(async (req, res)=> {
-      await checkForJWT(req)
+      //await checkForJWT(req)
       const { method, body:{user, email, picture, name}, query:{id} } = req; 
       await dbConnect() 
      switch(method){
