@@ -79,10 +79,15 @@ const home: NextPage<Iprops> = ({providers}) => {
 export default home  
 
 export const getServerSideProps = async (context: GetServerSidePropsContext)=>{
+    try {
     const providers = await getProviders()
-    return {
+     return {
         props: {
             providers
         }
+    } 
+    } catch (e){
+        console.log(e)
     }
+   
 }

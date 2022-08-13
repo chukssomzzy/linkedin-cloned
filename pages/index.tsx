@@ -61,6 +61,8 @@ export default Home
 
 export const getServerSideProps = async (context:GetServerSidePropsContext )=>{
        //check.is user is authrnticated 
+    try{
+
     const session = await getSession(context)
     if(!session) return {
         redirect: {
@@ -80,5 +82,8 @@ export const getServerSideProps = async (context:GetServerSidePropsContext )=>{
             posts: posts.posts,
             articles: news.articles
         }
+    }
+    } catch (e){
+        console.log(e)
     }
 }
